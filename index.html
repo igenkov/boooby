@@ -833,59 +833,97 @@
   .social-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .social-card {
-    background: var(--cream);
+    background: var(--earth);
     padding: 2.5rem 2rem;
-    border: 1px solid var(--border-subtle);
-    text-align: center;
-    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    text-align: left;
+    transition: all 0.35s ease;
     position: relative;
     overflow: hidden;
     cursor: pointer;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .social-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(200,150,62,0.1) 0%, transparent 65%);
+    pointer-events: none;
   }
 
   .social-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.22);
     border-color: var(--accent-gold);
   }
 
-  .social-card-icon {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+  .social-card:hover .social-arrow {
+    transform: translateX(5px);
   }
 
-  .social-card-platform {
+  .social-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .social-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--accent-gold);
+  }
+
+  .social-platform {
     font-family: 'PT Sans Narrow', sans-serif;
-    font-weight: 600;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+  }
+
+  .social-count {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 3.8rem);
+    font-weight: 700;
+    color: var(--sand);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .social-label {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(232, 213, 183, 0.5);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .social-cta {
+    font-family: 'PT Sans Narrow', sans-serif;
     font-size: 0.65rem;
-    letter-spacing: 0.3em;
+    font-weight: 700;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--accent-orange);
-    margin-bottom: 0.3rem;
+    margin-top: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
-  .social-card-handle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--earth);
-    margin-bottom: 0.6rem;
-  }
-
-  .social-card-followers {
-    font-family: 'PT Sans', sans-serif;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-  }
-
-  .social-card-followers strong {
-    color: var(--earth);
-    font-weight: 500;
+  .social-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
   }
 
   /* ===== QUOTE / PULLOUT ===== */
@@ -958,13 +996,35 @@
 
   .footer-links a {
     font-family: 'PT Sans', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: rgba(232, 213, 183, 0.4);
     text-decoration: none;
     transition: color 0.3s;
   }
 
   .footer-links a:hover { color: var(--sand); }
+
+  .footer-social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid rgba(200, 150, 62, 0.25);
+    color: rgba(232, 213, 183, 0.55) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .footer-social-btn:hover {
+    border-color: var(--accent-gold) !important;
+    color: var(--sand) !important;
+    background: rgba(200, 150, 62, 0.07);
+  }
+
+  .footer-social-icon {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
 
   .footer-copy {
     font-family: 'PT Sans', sans-serif;
@@ -1198,16 +1258,26 @@
     <h2 class="social-headline">Бъди един от десетки хиляди</h2>
     <div class="social-grid">
       <a class="social-card" href="https://www.youtube.com/@bobbyypetrov" target="_blank" rel="noopener">
-        <div class="social-card-icon">▶</div>
-        <div class="social-card-platform">YouTube</div>
-        <div class="social-card-handle">@bobbyypetrov</div>
-        <div class="social-card-followers"><strong>21К+ абонати</strong> следят пътешествието на живо</div>
+        <div class="social-card-header">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+          </svg>
+          <span class="social-platform">YouTube</span>
+        </div>
+        <div class="social-count">21К+</div>
+        <div class="social-label">абонати следят<br>пътешествието на живо</div>
+        <div class="social-cta">Последвай <span class="social-arrow">→</span></div>
       </a>
       <a class="social-card" href="https://www.instagram.com/bobbyypetrov/" target="_blank" rel="noopener">
-        <div class="social-card-icon">◎</div>
-        <div class="social-card-platform">Instagram</div>
-        <div class="social-card-handle">@bobbyypetrov</div>
-        <div class="social-card-followers"><strong>63К+ последователи</strong> виждат Африка през предното стъкло</div>
+        <div class="social-card-header">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span class="social-platform">Instagram</span>
+        </div>
+        <div class="social-count">63К+</div>
+        <div class="social-label">последователи виждат<br>Африка през предното стъкло</div>
+        <div class="social-cta">Последвай <span class="social-arrow">→</span></div>
       </a>
     </div>
   </div>
@@ -1231,8 +1301,18 @@
 <footer>
   <div class="footer-logo">Боби Петров — От Ямбол до края на света</div>
   <div class="footer-links">
-    <a href="https://www.youtube.com/@bobbyypetrov" target="_blank">YouTube</a>
-    <a href="https://www.instagram.com/bobbyypetrov/" target="_blank">Instagram</a>
+    <a class="footer-social-btn" href="https://www.youtube.com/@bobbyypetrov" target="_blank" rel="noopener">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+      </svg>
+      YouTube
+    </a>
+    <a class="footer-social-btn" href="https://www.instagram.com/bobbyypetrov/" target="_blank" rel="noopener">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+      Instagram
+    </a>
     <a href="#signup">Листа за книгата</a>
   </div>
   <p class="footer-copy">© 2026 Боби Петров. Всички права запазени.</p>
