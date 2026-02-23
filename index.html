@@ -491,21 +491,25 @@
     display: block;
     filter: brightness(0.72) saturate(0.8);
     transition: filter 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
-    transform: perspective(700px) rotateY(-5deg);
     box-shadow:
       8px 12px 35px rgba(0,0,0,0.55),
       3px 5px 12px rgba(0,0,0,0.35),
       -1px 0 6px rgba(0,0,0,0.2);
+    position: relative;
   }
+
+  .journey-photos img:nth-child(1) { transform: rotate(-2.5deg) translateX(-6px); }
+  .journey-photos img:nth-child(2) { transform: rotate(1.8deg)  translateX(5px); }
+  .journey-photos img:nth-child(3) { transform: rotate(-1.2deg) translateX(-3px); }
+  .journey-photos img:nth-child(4) { transform: rotate(2.8deg)  translateX(7px); }
 
   .journey-photos img:hover {
     filter: brightness(0.95) saturate(1);
-    transform: perspective(700px) rotateY(-2deg) translateX(-4px);
+    transform: rotate(0deg) translateX(0) scale(1.03) !important;
     box-shadow:
       12px 18px 50px rgba(0,0,0,0.65),
       4px 8px 18px rgba(0,0,0,0.4),
       -2px 0 8px rgba(0,0,0,0.25);
-    position: relative;
     z-index: 2;
   }
 
