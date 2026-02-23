@@ -469,6 +469,40 @@
     margin-top: 1rem;
   }
 
+  /* Journey two-column body */
+  .journey-body {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .journey-photos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: sticky;
+    top: 7rem;
+  }
+
+  .journey-photos img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.75) saturate(0.85);
+    transition: filter 0.4s ease, transform 0.4s ease;
+    border: 1px solid rgba(200, 150, 62, 0.15);
+  }
+
+  .journey-photos img:hover {
+    filter: brightness(1) saturate(1);
+    transform: scale(1.02);
+    border-color: rgba(200, 150, 62, 0.5);
+    z-index: 1;
+    position: relative;
+  }
+
   /* Timeline */
   .timeline {
     position: relative;
@@ -1039,6 +1073,9 @@
       transform: perspective(800px) rotateY(-5deg);
     }
 
+    .journey-body { grid-template-columns: 1fr; }
+    .journey-photos { display: none; }
+
     .social-grid { grid-template-columns: 1fr; }
 
     .signup-form { flex-direction: column; }
@@ -1135,6 +1172,7 @@
       <h2 class="journey-title">Пътешествие в глави</h2>
     </div>
 
+    <div class="journey-body">
     <div class="timeline">
       <div class="timeline-item" data-delay="0">
         <div class="timeline-dot"></div>
@@ -1172,6 +1210,14 @@
         <div class="timeline-place">Сиера Леоне 🇸🇱 и по-нататък…</div>
         <div class="timeline-desc">Пътешествието продължава. Пътят напред е неописан — и точно това е смисълът.</div>
       </div>
+    </div>
+
+    <div class="journey-photos">
+      <img src="journey1.jpg" alt="Пътешествието — снимка 1">
+      <img src="journey2.jpg" alt="Пътешествието — снимка 2">
+      <img src="journey3.jpg" alt="Пътешествието — снимка 3">
+      <img src="journey4.jpg" alt="Пътешествието — снимка 4">
+    </div>
     </div>
   </div>
 </section>
