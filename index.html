@@ -217,14 +217,29 @@
 
   .hero-subtitle {
     font-family: 'Source Serif 4', serif;
-    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
     font-weight: 300;
     color: var(--sand-light);
-    line-height: 1.7;
-    max-width: 580px;
+    line-height: 1.8;
+    max-width: 520px;
     margin-bottom: 2.5rem;
     opacity: 0;
+    list-style: none;
+    padding: 0;
     animation: fadeSlideUp 1s 0.7s forwards;
+  }
+
+  .hero-subtitle li {
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .hero-subtitle li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    font-weight: 400;
   }
 
   .hero-actions {
@@ -1126,9 +1141,12 @@
   <div class="hero-content">
     <div class="hero-tag">Истинска история</div>
     <h1 class="hero-title">От Ямбол<br>до <em>края на<br>света</em></h1>
-    <p class="hero-subtitle">
-      Едно момче на 25. Тридесетгодишен Opel Astra. Над 15 000 километра през Европа чак до дълбините на Западна Африка. Завладяваща история за бягство от комфорта в търсене на тръпка, от която усещаш, че живееш.
-    </p>
+    <ul class="hero-subtitle">
+      <li>Едно момче на 25</li>
+      <li>Тридесетгодишен Opel Astra</li>
+      <li>Над 15 000 километра през Европа чак до дълбините на Западна Африка</li>
+      <li>Завладяваща история за бягство от комфорта в търсене на тръпка, от която усещаш, че живееш</li>
+    </ul>
     <div class="hero-actions">
       <a href="#signup" class="btn-primary">Включи се</a>
       <a href="#journey" class="btn-ghost">Виж пътешествието</a>
